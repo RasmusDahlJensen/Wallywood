@@ -12,6 +12,6 @@ export const HeaderStyle = styled.header`
 		color: ${(props) => props.theme.colors.secondary};
 		font-size: 3rem;
 		font-weight: 900;
-		${Reset}
+ 			${Reset}
 	}
 `;
