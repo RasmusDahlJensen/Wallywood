@@ -54,9 +54,9 @@ export const Footer = () => {
 								d="M10,3H24a7,7,0,0,1,7,7V24a7,7,0,0,1-7,7H10a7,7,0,0,1-7-7V10a7,7,0,0,1,7-7Z"
 								fill="none"
 								stroke="#ccc"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="3"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="3"
 							/>
 							<path
 								id="Path_2"
@@ -65,9 +65,9 @@ export const Footer = () => {
 								transform="translate(-1.007 -0.993)"
 								fill="none"
 								stroke="#ccc"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="3"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="3"
 							/>
 							<path
 								id="Path_3"
@@ -76,9 +76,9 @@ export const Footer = () => {
 								transform="translate(-1.55 -0.45)"
 								fill="none"
 								stroke="#ccc"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="3"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="3"
 							/>
 						</g>
 					</g>
