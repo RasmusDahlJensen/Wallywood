@@ -7,7 +7,7 @@ const Home = () => {
 		<>
 			<SlideWrapper />
 			<Layout
-				title="Velkommen"
+				title="Sidste nyt..."
 				description="Her finder du nye og gamle plakater"
 			></Layout>
 			<Article />
