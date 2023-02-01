@@ -1,33 +1,44 @@
 import { useState, useEffect } from "react";
 import { ArticleStyle } from "./articleStyle";
-
-const ArticleAPI = async () => {
-	let url = "http://localhost:4000/poster";
-	const response = await fetch(url);
-	const responseData = await response.json();
-	return responseData;
-};
+import axios from "axios";
 
 export const Article = () => {
-	const [apiResponse, setApiResponse] = useState(true);
+	const [apiResponse, setApiResponse] = useState([]);
 
 	useEffect(() => {
-		ArticleAPI().then((result) => setApiResponse(result));
-	}, []);
-	console.log(apiResponse[0]?.image);
+		const getData = async () => {
+			let url = "http://localhost:4000/poster";
+			const result = await axios.get(url);
+			setApiResponse(result.data.slice(0, 2));
+		};
+		getData();
+	}, [setApiResponse]);
+	console.log(apiResponse[0]);
 
 	return (
 		<ArticleStyle>
-			{/* <div>
-				<img src={require(`${apiResponse[0]?.image}`)} alt="Film poster" />
-			</div> */}
-			<div>
-				<h3>{apiResponse[0]?.name}</h3>
-				{/* <img
-					src={require("https://info.kinorevuen.dk/wp-content/uploads/2021/01/rise-of-skywalker-plakat-1.jpg")}
-					alt="Film poster"
-				/> */}
-			</div>
+			<article>
+				{apiResponse &&
+					apiResponse.map((item) => {
+						return (
+							<figure key={item.id}>
+								{item.image && <img src={`${item.image}`} alt="Film poster" />}
+								<div>
+									<h3>{item.name}</h3>
+									<p>
+										Tempor laborum voluptate enim consectetur exercitation.
+										Aliquip do labore ullamco exercitation ipsum. Consectetur ex
+										non incididunt eiusmod amet eiusmod do laboris nisi ad
+										reprehenderit dolor cillum. Velit commodo nulla qui anim est
+										enim et irure quis sunt irure et.
+									</p>
+									<p>{item.genre}</p>
+									<button>Læs mere</button>
+								</div>
+							</figure>
+						);
+					})}
+			</article>
 		</ArticleStyle>
 	);
 };
