@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../../../Pages/Home/Home";
-import Plakater from "../../../Pages/Plakater/Plakater";
+import { Plakater } from "../../../Pages/Plakater/Plakater";
 import { Notfound } from "../../../Pages/NotFound/Notfound";
 import { About } from "../../../Pages/About/About";
 import { Kontakt } from "../../../Pages/Kontakt/Kontakt";

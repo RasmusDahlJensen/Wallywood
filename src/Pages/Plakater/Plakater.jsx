@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Plakater = () => {
+export const Plakater = () => {
 	return (
 		<Layout title="Plakater">
 			<GenreList />
@@ -35,5 +35,3 @@ const GenreList = () => {
 		</ul>
 	);
 };
-
-export default Plakater;
