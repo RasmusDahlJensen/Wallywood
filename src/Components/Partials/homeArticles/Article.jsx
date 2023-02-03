@@ -7,7 +7,7 @@ export const Article = () => {
 
 	useEffect(() => {
 		const getData = async () => {
-			let url = "http://localhost:4000/poster";
+			let url = "http://localhost:4000/poster/list";
 			const result = await axios.get(url);
 			setApiResponse(result.data.slice(0, 2));
 		};
