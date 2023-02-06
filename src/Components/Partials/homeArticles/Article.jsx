@@ -13,7 +13,7 @@ export const Article = () => {
 		};
 		getData();
 	}, [setApiResponse]);
-	console.log(apiResponse[0]);
+	// console.log(apiResponse[0]);
 
 	return (
 		<ArticleStyle>

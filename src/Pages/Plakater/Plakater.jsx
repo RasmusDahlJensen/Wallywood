@@ -17,6 +17,7 @@ const GenreList = () => {
 	useEffect(() => {
 		const getData = async () => {
 			const result = await axios.get("http://localhost:4000/genre");
+			// console.log(result)
 			setData(result.data);
 		};
 		getData();
