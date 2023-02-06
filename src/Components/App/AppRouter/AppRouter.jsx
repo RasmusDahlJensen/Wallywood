@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../../../Pages/Home/Home";
-import { Plakater } from "../../../Pages/Plakater/Plakater";
+import { Posters } from "../../../Pages/Posters/Posters";
 import { Notfound } from "../../../Pages/NotFound/Notfound";
 import { About } from "../../../Pages/About/About";
 import { Kontakt } from "../../../Pages/Kontakt/Kontakt";
@@ -10,7 +10,7 @@ const AppRouter = () => {
 	return (
 		<Routes>
 			<Route index element={<Home />} />
-			<Route path="/plakater" element={<Plakater />} />
+			<Route path="/posters" element={<Posters />} />
 			<Route path="/about" element={<About />} />
 			<Route path="/kontakt" element={<Kontakt />} />
 			<Route path="/login" element={<Login />} />
