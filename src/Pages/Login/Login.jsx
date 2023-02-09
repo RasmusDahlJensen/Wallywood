@@ -3,7 +3,7 @@ import { Layout } from "../../Components/App/Layout/Layout";
 
 export const Login = () => {
 	const submitHandle = async (e) => {
-		console.log(e.target.form);
+		// console.log(e.target.form.password.value);
 
 		const formdata = new URLSearchParams();
 		formdata.append("username", e.target.form.username.value);
@@ -16,7 +16,7 @@ export const Login = () => {
 			console.log(result.data.access_token);
 			handleSessionData(result.data.access_token);
 		} catch (err) {
-			// console.error(`Kunne ikke logge ind: ${err}`);
+			console.error(`Kunne ikke logge ind: ${err}`);
 		}
 	};
 
@@ -31,11 +31,11 @@ export const Login = () => {
 			<form method="POST">
 				<div>
 					<label htmlFor="username">Brugernavn</label>
-					<input type="text" name="username" id="password" />
+					<input type="text" name="username" />
 				</div>
 				<div>
 					<label htmlFor="password">Adgangskode:</label>
-					<input type="password" name="password" id="password" />
+					<input type="password" name="password" />
 				</div>
 				<div>
 					<button type="button" onClick={(e) => submitHandle(e)}>

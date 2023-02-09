@@ -1,5 +1,5 @@
 import { Layout } from "../../Components/App/Layout/Layout";
-import { Link, Outlet, useParams, NavLink } from "react-router-dom";
+import { Outlet, useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Articlestyle, Posterstyle } from "./Posters.style";
