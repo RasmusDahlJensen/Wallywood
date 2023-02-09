@@ -37,7 +37,7 @@ const GenreList = () => {
 				data.map((genre) => {
 					return (
 						<li key={genre.id}>
-							<Link to={`/posters/${genre.slug}`}>{genre.title}</Link>
+							<NavLink to={`/posters/${genre.slug}`}>{genre.title}</NavLink>
 						</li>
 					);
 				})}

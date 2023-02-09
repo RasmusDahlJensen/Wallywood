@@ -4,7 +4,7 @@ export const Posterstyle = styled.div`
 	display: flex;
 	width: 100%;
 	img {
-		width: 250px;
+		width: 230px;
 		height: 350px;
 	}
 	li {
@@ -21,16 +21,38 @@ export const Posterstyle = styled.div`
 	ol {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 15px;
 		width: 100%;
+		margin: 0;
+		button {
+			background-color: ${(props) => props.theme.colors.quinary};
+			border-radius: 5px;
+			padding: 5px 15px 5px 15px;
+			border: 1px solid black;
+			box-shadow: none;
+			border-radius: 0px;
+		}
 	}
 	ul {
-		width: 30%;
+		padding: 0;
+		width: 150px;
+		text-align: start;
+
+		a {
+			text-decoration: none;
+		}
+		.active {
+			color: black;
+			font-weight: 600;
+			font-size: 1.1rem;
+		}
 	}
 	.genreList {
-		max-width: 150px;
 		margin: 0;
-		text-align: center;
+		border-right: 1px solid #b6b6b6;
+		height: 750px;
+		text-align: start;
 	}
 	.posterList {
 		max-width: 1000px;
@@ -44,6 +66,12 @@ export const Articlestyle = styled.article`
 	width: 100%;
 	button {
 		width: 150px;
+		background-color: ${(props) => props.theme.colors.quinary};
+		border-radius: 5px;
+		padding: 5px 15px 5px 15px;
+		border: 1px solid black;
+		box-shadow: none;
+		border-radius: 0px;
 	}
 	h2 {
 		font-size: 1.7 + -rem;

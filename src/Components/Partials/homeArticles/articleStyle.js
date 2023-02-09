@@ -23,6 +23,12 @@ export const ArticleStyle = styled.div`
 			margin: 0;
 		}
 		button {
+			background-color: ${(props) => props.theme.colors.quinary};
+			border-radius: 5px;
+			padding: 5px 15px 5px 15px;
+			border: 1px solid black;
+			box-shadow: none;
+			border-radius: 0px;
 		}
 	}
 `;
