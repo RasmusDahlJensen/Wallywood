@@ -1,12 +1,11 @@
 import axios from "axios";
-import { useContext } from "react";
 import { Layout } from "../../Components/App/Layout/Layout";
 import { useAuth } from "../../Components/Providers/AuthProvider";
 
 export const Login = () => {
 	const { loginData, setLoginData } = useAuth();
 
-	console.log(`Login Provider ${loginData}`);
+	// console.log(`Login Provider ${loginData}`);
 
 	const submitHandle = async (e) => {
 		// console.log(e.target.form.password.value);
