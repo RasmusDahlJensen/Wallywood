@@ -1,5 +1,5 @@
 import { Layout } from "../../Components/App/Layout/Layout";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Articlestyle, Posterstyle } from "./Posters.style";
@@ -52,9 +52,10 @@ export const PosterList = () => {
 	useEffect(() => {
 		const getData = async () => {
 			const endpoint = `http://localhost:4000/poster/list/${genre}`;
-			// console.log(endpoint);++
+			// console.log(endpoint);
 			const result = await axios.get(endpoint);
 			setData(result.data);
+			console.log(genre);
 		};
 		getData();
 	}, [genre]);
@@ -66,7 +67,9 @@ export const PosterList = () => {
 					return (
 						<li key={poster.id}>
 							<img src={poster.image} alt="Poster" />
-							<Link to={`/posters/details/${poster.slug}`}>{poster.name}</Link>
+							<NavLink to={`/posters/details/${poster.slug}`}>
+								{poster.name}
+							</NavLink>
 							<p>Kr. {poster.price}</p>
 							<button>Læg i kurv</button>
 						</li>
