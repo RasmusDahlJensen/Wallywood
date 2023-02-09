@@ -3,12 +3,12 @@ import { Layout } from "../../Components/App/Layout/Layout";
 
 export const Login = () => {
 	const submitHandle = async (e) => {
-		// console.log(e.target.form.username.value);
+		console.log(e.target.form);
 
 		const formdata = new URLSearchParams();
 		formdata.append("username", e.target.form.username.value);
 		formdata.append("password", e.target.form.password.value);
-		// console.log(...formdata);
+		console.log(...formdata);
 
 		const endpoint = `http://localhost:4000/login`;
 		try {
@@ -16,7 +16,7 @@ export const Login = () => {
 			console.log(result.data.access_token);
 			handleSessionData(result.data.access_token);
 		} catch (err) {
-			console.error(`Kunne ikke logge ind: ${err}`);
+			// console.error(`Kunne ikke logge ind: ${err}`);
 		}
 	};
 
