@@ -5,7 +5,7 @@ import { useCartData } from "../../Components/Providers/CartProvider";
 
 export const AddToCartButton = (props) => {
 	const { loginData } = useAuth();
-	const { cartData } = useCartData;
+	const { cartData, setCartData } = useCartData();
 	// console.log(cartData);
 
 	const submitToCart = () => {
@@ -23,7 +23,9 @@ export const AddToCartButton = (props) => {
 		const result = axios.post(endpoint, formdata, options);
 	};
 
-	return (
+	return cartData.find((x) => x.poster_id === props.id) ? (
+		<>Dette produkt er allerede i kurven</>
+	) : (
 		<AddToCartButtonStyle onClick={submitToCart}>
 			{props.children}
 		</AddToCartButtonStyle>

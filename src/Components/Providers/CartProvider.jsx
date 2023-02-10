@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
 			};
 			const endpoint = `http://localhost:4000/cart`;
 			try {
-				if (loginData) {
+				if (loginData.access_token) {
 					const result = await axios.get(endpoint, options);
 					setCartData(result.data);
 				}
@@ -26,7 +26,7 @@ export const CartProvider = ({ children }) => {
 			}
 		};
 		getData();
-	}, [setCartData]);
+	}, [children, loginData]);
 
 	return (
 		<CartContext.Provider value={{ cartData, setCartData }}>
