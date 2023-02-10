@@ -25,14 +25,6 @@ export const Posterstyle = styled.div`
 		gap: 15px;
 		width: 100%;
 		margin: 0;
-		button {
-			background-color: ${(props) => props.theme.colors.quinary};
-			border-radius: 5px;
-			padding: 5px 15px 5px 15px;
-			border: 1px solid black;
-			box-shadow: none;
-			border-radius: 0px;
-		}
 	}
 	ul {
 		padding: 0;
@@ -64,15 +56,6 @@ export const Articlestyle = styled.article`
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
-	button {
-		width: 150px;
-		background-color: ${(props) => props.theme.colors.quinary};
-		border-radius: 5px;
-		padding: 5px 15px 5px 15px;
-		border: 1px solid black;
-		box-shadow: none;
-		border-radius: 0px;
-	}
 	h2 {
 		font-size: 1.7 + -rem;
 	}
