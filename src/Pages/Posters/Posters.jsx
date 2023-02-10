@@ -55,7 +55,7 @@ export const PosterList = () => {
 			// console.log(endpoint);
 			const result = await axios.get(endpoint);
 			setData(result.data);
-			console.log(genre);
+			// console.log(genre);
 		};
 		getData();
 	}, [genre]);
@@ -89,7 +89,7 @@ export const PosterDetails = () => {
 			// console.log(endpoint);
 			const result = await axios.get(endpoint);
 			setData(result.data);
-			console.log(result.data);
+			// console.log(result.data);
 		};
 		getData();
 	}, [poster]);

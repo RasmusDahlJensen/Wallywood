@@ -18,6 +18,9 @@ const NavBarPrimary = () => {
 					<NavLink to="/kontakt">KONTAKT</NavLink>
 				</li>
 				<li>
+					<NavLink to="/cart">KURV</NavLink>
+				</li>
+				<li>
 					<NavLink to="/login">LOGIN</NavLink>
 				</li>
 			</ul>
