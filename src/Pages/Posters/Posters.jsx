@@ -3,7 +3,7 @@ import { Outlet, useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Articlestyle, Posterstyle } from "./Posters.style";
-import { AddToCartButton } from "../Cart/AddToCartButton";
+import { AddToCartButton } from "../../Components/Cart/AddToCartButton";
 
 export const Posters = () => {
 	return (
@@ -72,7 +72,7 @@ export const PosterList = () => {
 								{poster.name}
 							</NavLink>
 							<p>Kr. {poster.price}</p>
-							<AddToCartButton id={data.id}>Læg i kurv</AddToCartButton>
+							<AddToCartButton id={poster.id}>Læg i kurv</AddToCartButton>
 						</li>
 					);
 				})}

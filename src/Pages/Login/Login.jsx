@@ -5,21 +5,14 @@ import { useAuth } from "../../Components/Providers/AuthProvider";
 export const Login = () => {
 	const { loginData, setLoginData } = useAuth();
 
-	// console.log(`Login Provider ${loginData}`);
-
 	const submitHandle = async (e) => {
-		// console.log(e.target.form.password.value);
-
 		const formdata = new URLSearchParams();
 		formdata.append("username", e.target.form.username.value);
 		formdata.append("password", e.target.form.password.value);
-		console.log(...formdata);
-
 		const endpoint = `http://localhost:4000/login`;
 		try {
 			const result = await axios.post(endpoint, formdata);
-			console.log(result.data.access_token);
-			handleSessionData(result.data.access_token);
+			handleSessionData(result.data);
 		} catch (err) {
 			console.error(`Kunne ikke logge ind: ${err}`);
 		}
@@ -28,26 +21,39 @@ export const Login = () => {
 	const handleSessionData = (data) => {
 		if (data) {
 			sessionStorage.setItem("token", JSON.stringify(data));
+			setLoginData(data);
 		}
+	};
+
+	const Logout = () => {
+		sessionStorage.removeItem("token");
+		setLoginData("");
 	};
 
 	return (
 		<Layout title="Login">
-			<form method="POST">
+			{!loginData ? (
+				<form method="POST">
+					<div>
+						<label htmlFor="username">Brugernavn</label>
+						<input type="text" name="username" placeholder="admin@admin.dk" />
+					</div>
+					<div>
+						<label htmlFor="password">Adgangskode:</label>
+						<input type="password" name="password" />
+					</div>
+					<div>
+						<button type="button" onClick={(e) => submitHandle(e)}>
+							Login
+						</button>
+					</div>
+				</form>
+			) : (
 				<div>
-					<label htmlFor="username">Brugernavn</label>
-					<input type="text" name="username" />
+					<p>Du er logget ind.</p>
+					<button onClick={() => Logout()}>Log ud</button>
 				</div>
-				<div>
-					<label htmlFor="password">Adgangskode:</label>
-					<input type="password" name="password" />
-				</div>
-				<div>
-					<button type="button" onClick={(e) => submitHandle(e)}>
-						Login
-					</button>
-				</div>
-			</form>
+			)}
 		</Layout>
 	);
 };

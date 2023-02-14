@@ -8,7 +8,7 @@ export const AddToCartButton = (props) => {
 	const { cartData, setCartData } = useCartData();
 	// console.log(cartData);
 
-	const submitToCart = () => {
+	const submitToCart = async () => {
 		console.log(props.id);
 		console.log(loginData);
 		const options = {
@@ -20,7 +20,11 @@ export const AddToCartButton = (props) => {
 		formdata.append("poster_id", props.id);
 		formdata.append("quantity", 1);
 		const endpoint = `http://localhost:4000/cart`;
-		const result = axios.post(endpoint, formdata, options);
+		const result = await axios.post(endpoint, formdata, options);
+		if (result.data) {
+			const newCartItems = await axios.get(endpoint, options);
+			setCartData(newCartItems.data);
+		}
 	};
 
 	return cartData.find((x) => x.poster_id === props.id) ? (

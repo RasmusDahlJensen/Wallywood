@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
 		const getData = async () => {
 			const options = {
 				headers: {
-					Authorization: `Bearer ${loginData}`,
+					Authorization: `Bearer ${loginData.access_token}`,
 				},
 			};
 			const endpoint = `http://localhost:4000/cart`;
