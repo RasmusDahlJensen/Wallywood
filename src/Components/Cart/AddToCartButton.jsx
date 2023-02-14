@@ -13,9 +13,10 @@ export const AddToCartButton = (props) => {
 		console.log(loginData);
 		const options = {
 			headers: {
-				Authorization: `Bearer ${loginData}`,
+				Authorization: `Bearer ${loginData.access_token}`,
 			},
 		};
+		console.log(options);
 		const formdata = new URLSearchParams();
 		formdata.append("poster_id", props.id);
 		formdata.append("quantity", 1);
