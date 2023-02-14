@@ -1,11 +1,10 @@
-import { useCartData } from "../../Components/Providers/CartProvider";
 import { CartIconStyle } from "./CartIcon.style";
+import { ReactComponent as IconCartSVG } from "../../Assets/svg/icon_cart.svg";
 
 export const CartIcon = () => {
-	const { cartData } = useCartData();
 	return (
 		<CartIconStyle>
-			<p>Du har {cartData.length} varer i kurven</p>
+			<IconCartSVG />
 		</CartIconStyle>
 	);
 };
