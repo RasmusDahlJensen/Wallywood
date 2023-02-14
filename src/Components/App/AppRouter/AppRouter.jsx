@@ -9,7 +9,7 @@ import { Notfound } from "../../../Pages/NotFound/Notfound";
 import { About } from "../../../Pages/About/About";
 import { Kontakt } from "../../../Pages/Kontakt/Kontakt";
 import { Login } from "../../../Pages/Login/Login";
-// import { Cart } from "../../../Pages/Cart/Cart";
+import { Cart } from "../../../Pages/Cart/Cart";
 
 const AppRouter = () => {
 	return (
@@ -21,7 +21,7 @@ const AppRouter = () => {
 			</Route>
 			<Route path="/about" element={<About />} />
 			<Route path="/kontakt" element={<Kontakt />} />
-			{/* <Route path="/cart" element={<Cart />} /> */}
+			<Route path="/cart" element={<Cart />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/*" element={<Notfound />} />
 		</Routes>
