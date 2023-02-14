@@ -9,14 +9,14 @@ export const AddToCartButton = (props) => {
 	// console.log(cartData);
 
 	const submitToCart = async () => {
-		console.log(props.id);
-		console.log(loginData);
+		// console.log(props.id);
+		// console.log(loginData);
 		const options = {
 			headers: {
 				Authorization: `Bearer ${loginData.access_token}`,
 			},
 		};
-		console.log(options);
+		// console.log(options);
 		const formdata = new URLSearchParams();
 		formdata.append("poster_id", props.id);
 		formdata.append("quantity", 1);

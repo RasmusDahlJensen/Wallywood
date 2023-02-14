@@ -7,7 +7,7 @@ import { CartIcon } from "./Components/Cart/CartIcon";
 function App() {
 	return (
 		<ContainerStyle maxwidth="1024">
-			<CartIcon></CartIcon>
+			<CartIcon />
 			<Header></Header>
 			<AppRouter />
 			<Footer />
