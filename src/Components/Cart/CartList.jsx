@@ -13,7 +13,7 @@ export const CartList = () => {
 		return prev + +current.poster.price;
 	}, 0);
 
-	const deleteButton = async (id) => {
+	const deleteItem = async (id) => {
 		const options = {
 			headers: {
 				Authorization: `Bearer ${loginData.access_token}`,
@@ -43,7 +43,7 @@ export const CartList = () => {
 							<div>{item.quantity}</div>
 							<div>{item.poster.price} DKK</div>
 							<div>
-								<IconTrashSVG onClick={() => deleteButton(item.id)} />
+								<IconTrashSVG onClick={() => deleteItem(item.id)} />
 							</div>
 						</div>
 					);
