@@ -29,7 +29,7 @@ export const AddToCartButton = (props) => {
 	};
 
 	return cartData.find((x) => x.poster_id === props.id) ? (
-		<>Dette produkt er allerede i kurven</>
+		<p style={{ color: "darkred" }}>Dette produkt er allerede i kurven</p>
 	) : (
 		<AddToCartButtonStyle onClick={submitToCart}>
 			{props.children}

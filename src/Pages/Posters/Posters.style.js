@@ -14,6 +14,15 @@ export const Posterstyle = styled.div`
 		align-items: center;
 		gap: 5px;
 		margin: 15px 0 15px 0;
+		.flex {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 10px;
+			p {
+				margin-top: 10px;
+			}
+		}
 	}
 	p {
 		margin: 0;
@@ -53,14 +62,23 @@ export const Posterstyle = styled.div`
 
 export const Articlestyle = styled.article`
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	width: 100%;
+	padding: 2%;
 	h2 {
-		font-size: 1.7 + -rem;
+		font-size: 1.7rem;
 	}
 	img {
 		width: 350px;
 		height: auto;
+	}
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+	.articleContent {
+		padding: 1%;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5%;
 	}
 `;

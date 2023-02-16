@@ -48,35 +48,49 @@ const GenreList = () => {
 
 export const PosterList = () => {
 	const [data, setData] = useState([]);
+	const [sort, setSort] = useState();
 	const { genre } = useParams();
 
 	useEffect(() => {
 		const getData = async () => {
-			const endpoint = `http://localhost:4000/poster/list/${genre}`;
-			// console.log(endpoint);
+			let endpoint;
+			sort === undefined
+				? (endpoint = `http://localhost:4000/poster/list/${genre}?sortkey=name`)
+				: (endpoint = `http://localhost:4000/poster/list/${genre}${sort}`);
 			const result = await axios.get(endpoint);
 			setData(result.data);
 			// console.log(genre);
 		};
 		getData();
-	}, [genre]);
+	}, [genre, sort]);
 
+	const getSort = (e) => {
+		setSort(e.target.value);
+		// console.log(sort);
+	};
 	return (
-		<ol>
-			{data &&
-				data.map((poster) => {
-					return (
-						<li key={poster.id}>
-							<img src={poster.image} alt="Poster" />
-							<NavLink to={`/posters/details/${poster.slug}`}>
-								{poster.name}
-							</NavLink>
-							<p>Kr. {poster.price}</p>
-							<AddToCartButton id={poster.id}>Læg i kurv</AddToCartButton>
-						</li>
-					);
-				})}
-		</ol>
+		<div>
+			<select onChange={getSort}>
+				<option value="?sortkey=name">Titel</option>
+				<option value="?sortdir=asc&sortkey=price">Pris - Stigende</option>
+				<option value="?sortdir=desc&sortkey=price">Pris - Faldende</option>
+			</select>
+			<ol>
+				{data &&
+					data.map((poster) => {
+						return (
+							<li key={poster.id}>
+								<img src={poster.image} alt="Poster" />
+								<NavLink to={`/posters/details/${poster.slug}`}>
+									{poster.name}
+								</NavLink>
+								<p>Kr. {poster.price}</p>
+								<AddToCartButton id={poster.id}>Læg i kurv</AddToCartButton>
+							</li>
+						);
+					})}
+			</ol>
+		</div>
 	);
 };
 
@@ -90,7 +104,7 @@ export const PosterDetails = () => {
 			// console.log(endpoint);
 			const result = await axios.get(endpoint);
 			setData(result.data);
-			// console.log(result.data);
+			console.log(result.data);
 		};
 		getData();
 	}, [poster]);
@@ -98,23 +112,34 @@ export const PosterDetails = () => {
 	return (
 		<Articlestyle>
 			<img src={data.image} alt="film" />
-			<h2>{data.name}</h2>
-			<div>
-				<h3>Beskrivelse:</h3>
-				<p>{data.description}</p>
-			</div>
-			<div>
+			<div className="articleContent">
+				<h2>{data.name}</h2>
+				<div>
+					<h3>Beskrivelse:</h3>
+					<p>{data.description}</p>
+				</div>
+				<div>
+					<h3>Mål:</h3>
+					<p>
+						{data.width} x {data.height}
+					</p>
+				</div>
 				<div>
 					<h3>Pris:</h3>
 					<p>{data.price} Kr.</p>
 				</div>
 				<div>
+					<h3>Lager:</h3>
 					<p>
-						Der er <b>{data.stock}</b> tilbage
+						Der er{" "}
+						<u>
+							<b>{data.stock}</b>
+						</u>{" "}
+						tilbage
 					</p>
 				</div>
+				<AddToCartButton id={data.id}>Læg i kurv</AddToCartButton>
 			</div>
-			<AddToCartButton id={data.id}>Læg i kurv</AddToCartButton>
 		</Articlestyle>
 	);
 };
