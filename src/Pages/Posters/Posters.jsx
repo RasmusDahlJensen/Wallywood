@@ -2,8 +2,9 @@ import { Layout } from "../../Components/App/Layout/Layout";
 import { Outlet, useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Articlestyle, Posterstyle } from "./Posters.style";
+import { Articlestyle, Posterstyle, SelectStyle } from "./Posters.style";
 import { AddToCartButton } from "../../Components/Cart/AddToCartButton";
+import Modal from "react-modal";
 
 export const Posters = () => {
 	return (
@@ -70,11 +71,11 @@ export const PosterList = () => {
 	};
 	return (
 		<div>
-			<select onChange={getSort}>
+			<SelectStyle onChange={getSort}>
 				<option value="?sortkey=name">Titel</option>
 				<option value="?sortdir=asc&sortkey=price">Pris - Stigende</option>
 				<option value="?sortdir=desc&sortkey=price">Pris - Faldende</option>
-			</select>
+			</SelectStyle>
 			<ol>
 				{data &&
 					data.map((poster) => {
@@ -104,14 +105,16 @@ export const PosterDetails = () => {
 			// console.log(endpoint);
 			const result = await axios.get(endpoint);
 			setData(result.data);
-			console.log(result.data);
+			// console.log(result.data);
 		};
 		getData();
 	}, [poster]);
 
+	const handleModal = (e) => {};
+
 	return (
 		<Articlestyle>
-			<img src={data.image} alt="film" />
+			<img src={data.image} alt="film" onClick={handleModal} />
 			<div className="articleContent">
 				<h2>{data.name}</h2>
 				<div>

@@ -82,3 +82,11 @@ export const Articlestyle = styled.article`
 		gap: 2.5%;
 	}
 `;
+
+export const SelectStyle = styled.select`
+	background-color: white;
+	padding: 1%;
+	border: 1px solid grey;
+	border-radius: 5px;
+	margin-left: 7.5%;
+`;
