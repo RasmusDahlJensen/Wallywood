@@ -2,9 +2,13 @@ import { Layout } from "../../Components/App/Layout/Layout";
 import { Outlet, useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Articlestyle, Posterstyle, SelectStyle } from "./Posters.style";
+import {
+	Articlestyle,
+	Posterstyle,
+	SelectStyle,
+	SearchStyle,
+} from "./Posters.style";
 import { AddToCartButton } from "../../Components/Cart/AddToCartButton";
-import Modal from "react-modal";
 
 export const Posters = () => {
 	return (
@@ -50,6 +54,7 @@ const GenreList = () => {
 export const PosterList = () => {
 	const [data, setData] = useState([]);
 	const [sort, setSort] = useState();
+	const [filter, setFilter] = useState([]);
 	const { genre } = useParams();
 
 	useEffect(() => {
@@ -59,30 +64,46 @@ export const PosterList = () => {
 				? (endpoint = `http://localhost:4000/poster/list/${genre}?sortkey=name`)
 				: (endpoint = `http://localhost:4000/poster/list/${genre}${sort}`);
 			const result = await axios.get(endpoint);
-			setData(result.data);
+			if (filter.length === 0) {
+				setData(result.data);
+			} else {
+				let filteredArr = result.data.filter((el) =>
+					el.name.toLowerCase().includes(filter.toLowerCase())
+				);
+				setData(filteredArr);
+			}
 			// console.log(genre);
 		};
 		getData();
-	}, [genre, sort]);
+	}, [genre, sort, filter]);
 
 	const getSort = (e) => {
 		setSort(e.target.value);
 		// console.log(sort);
 	};
+	const getFilter = (e) => {
+		setFilter(e.target.value);
+	};
 	return (
 		<div>
-			<SelectStyle onChange={getSort}>
-				<option value="?sortkey=name">Titel</option>
-				<option value="?sortdir=asc&sortkey=price">Pris - Stigende</option>
-				<option value="?sortdir=desc&sortkey=price">Pris - Faldende</option>
-			</SelectStyle>
+			<SearchStyle>
+				<SelectStyle onChange={getSort}>
+					<option value="?sortkey=name">Titel</option>
+					<option value="?sortdir=asc&sortkey=price">Pris - Stigende</option>
+					<option value="?sortdir=desc&sortkey=price">Pris - Faldende</option>
+				</SelectStyle>
+				<div>
+					<input type="text" placeholder="Søg..." onChange={getFilter} />
+				</div>
+			</SearchStyle>
 			<ol>
 				{data &&
 					data.map((poster) => {
 						return (
 							<li key={poster.id}>
-								<img src={poster.image} alt="Poster" />
 								<NavLink to={`/posters/details/${poster.slug}`}>
+									<img src={poster.image} alt="Poster" />
+
 									{poster.name}
 								</NavLink>
 								<p>Kr. {poster.price}</p>
@@ -110,11 +131,10 @@ export const PosterDetails = () => {
 		getData();
 	}, [poster]);
 
-	const handleModal = (e) => {};
-
 	return (
 		<Articlestyle>
-			<img src={data.image} alt="film" onClick={handleModal} />
+			<img src={data.image} alt="film" />
+
 			<div className="articleContent">
 				<h2>{data.name}</h2>
 				<div>

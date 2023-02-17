@@ -58,6 +58,11 @@ export const Posterstyle = styled.div`
 	.posterList {
 		max-width: 1000px;
 	}
+	a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 `;
 
 export const Articlestyle = styled.article`
@@ -89,4 +94,15 @@ export const SelectStyle = styled.select`
 	border: 1px solid grey;
 	border-radius: 5px;
 	margin-left: 7.5%;
+`;
+
+export const SearchStyle = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 95%;
+	input {
+		padding: 5%;
+		border-radius: 5px;
+		border: 1px solid black;
+	}
 `;
